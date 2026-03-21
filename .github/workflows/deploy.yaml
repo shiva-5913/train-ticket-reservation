@@ -31,7 +31,7 @@ jobs:
         run: echo "ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)" >> $GITHUB_ENV
 
       - name: Build Docker Image
-        run: docker build -t $ECR_REPOSITORY .
+        run: docker build -t $ECR_REPOSITORY:latest .
 
       - name: Tag Image
         run: docker tag $ECR_REPOSITORY:latest $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:latest
